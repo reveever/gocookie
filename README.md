@@ -1,5 +1,7 @@
 # Go Cookie
 
+[![Go Reference](https://pkg.go.dev/badge/github.com/reveever/gocookie.svg)](https://pkg.go.dev/github.com/reveever/gocookie)
+
 A Go library for extracting cookies from various web browsers on macOS (Windows and Linux support coming soon).
 
 ## Features
