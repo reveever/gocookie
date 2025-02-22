@@ -5,6 +5,7 @@ package gocookie
 import (
 	"os"
 	"strings"
+	"sync"
 
 	"github.com/keybase/go-keychain"
 )
@@ -35,10 +36,44 @@ func GetCookieFilePath(browserType BrowserType) string {
 	}
 }
 
+var (
+	edgeSecretKey   []byte
+	edgeSecretKeyMu sync.Mutex
+)
+
 func GetEdgeSecretKey() ([]byte, error) {
-	return keychain.GetGenericPassword(`Microsoft Edge Safe Storage`, `Microsoft Edge`, "", "")
+	edgeSecretKeyMu.Lock()
+	defer edgeSecretKeyMu.Unlock()
+
+	if edgeSecretKey != nil {
+		return edgeSecretKey, nil
+	}
+
+	key, err := keychain.GetGenericPassword(`Microsoft Edge Safe Storage`, `Microsoft Edge`, "", "")
+	if err != nil {
+		return nil, err
+	}
+	edgeSecretKey = key
+	return key, nil
 }
 
+var (
+	chromeSecretKey   []byte
+	chromeSecretKeyMu sync.Mutex
+)
+
 func GetChromeSecretKey() ([]byte, error) {
-	return keychain.GetGenericPassword(`Chrome Safe Storage`, `Chrome`, "", "")
+	chromeSecretKeyMu.Lock()
+	defer chromeSecretKeyMu.Unlock()
+
+	if chromeSecretKey != nil {
+		return chromeSecretKey, nil
+	}
+
+	key, err := keychain.GetGenericPassword(`Chrome Safe Storage`, `Chrome`, "", "")
+	if err != nil {
+		return nil, err
+	}
+	chromeSecretKey = key
+	return key, nil
 }

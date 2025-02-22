@@ -7,6 +7,12 @@ import (
 )
 
 func TestGetCookies(t *testing.T) {
+	// cancel the operation
+	_, err := GetCookies(Edge, WithDomainSuffix("example.com"))
+	if err != nil {
+		t.Log(err)
+	}
+
 	cookies, err := GetCookies(Edge, WithDomainSuffix("apple.com"))
 	if err != nil {
 		t.Fatal(err)
