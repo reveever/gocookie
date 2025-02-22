@@ -1,6 +1,6 @@
 # Go Cookie
 
-[![Go Reference](https://pkg.go.dev/badge/github.com/reveever/gocookie.svg)](https://pkg.go.dev/github.com/reveever/gocookie)
+[![Go Reference](https://pkg.go.dev/badge/github.com/reveever/gocookie.svg)](https://pkg.go.dev/github.com/reveever/gocookie) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 A Go library for extracting cookies from various web browsers on macOS (Windows and Linux support coming soon).
 
@@ -18,7 +18,7 @@ A Go library for extracting cookies from various web browsers on macOS (Windows 
 ## Example
 
 ```go
-cookies, err := GetCookies(Edge, WithDomainSuffix("example.com"))
+cookies, err := gocookie.GetCookies(gocookie.Edge, gocookie.WithDomainSuffix("example.com"))
 if err != nil {
     log.Fatal(err)
 }
@@ -29,7 +29,7 @@ for _, cookie := range cookies {
 ```
 
 ```go
-jar, err := GetCookiesJar(Edge, WithDomainSuffix("example.com"))
+jar, err := gocookie.GetCookiesJar(gocookie.Edge, gocookie.WithDomainSuffix("example.com"))
 if err != nil {
     log.Fatal(err)
 }
