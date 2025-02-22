@@ -4,6 +4,7 @@ import (
 	"crypto/sha1"
 	"database/sql"
 	"errors"
+	"fmt"
 	"net/http"
 
 	_ "github.com/mattn/go-sqlite3"
@@ -96,8 +97,8 @@ func (c *chromium) decrypt(key, iv, encryptValue []byte) ([]byte, error) {
 	if err != nil {
 		return nil, err
 	}
-	if len(value) <= 32 {
-		return nil, errors.New("decrypt failed")
+	if len(value) < 32 {
+		return nil, fmt.Errorf("value is too short: %d", len(value))
 	}
 	return value[32:], nil
 }
