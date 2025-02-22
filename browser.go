@@ -73,19 +73,20 @@ type Option func(*Options)
 type Options struct {
 	CookiePath     string
 	SecretKey      []byte
-	Domains        map[string]struct{}
+	Domains        []string
 	DomainSuffix   []string
 	DomainContains []string
 }
 
 type domainFilter func(domain string) bool
 
-func (o *Options) domainFilter() domainFilter {
+func (o *Options) DomainFilter() domainFilter {
 	return func(domain string) bool {
-		if o.Domains != nil {
-			_, ok := o.Domains[domain]
-			if ok {
-				return true
+		if len(o.Domains) > 0 {
+			for _, d := range o.Domains {
+				if d == domain {
+					return true
+				}
 			}
 		}
 
@@ -121,24 +122,20 @@ func WithSecretKey(secretKey []byte) Option {
 	}
 }
 
-func WithDomain(domain string) Option {
+func WithDomain(domains ...string) Option {
 	return func(o *Options) {
-		if o.Domains == nil {
-			o.Domains = map[string]struct{}{domain: {}}
-		} else {
-			o.Domains[domain] = struct{}{}
-		}
+		o.Domains = append(o.Domains, domains...)
 	}
 }
 
-func WithDomainSuffix(suffix string) Option {
+func WithDomainSuffix(suffixes ...string) Option {
 	return func(o *Options) {
-		o.DomainSuffix = append(o.DomainSuffix, suffix)
+		o.DomainSuffix = append(o.DomainSuffix, suffixes...)
 	}
 }
 
-func WithDomainContains(contains string) Option {
+func WithDomainContains(contains ...string) Option {
 	return func(o *Options) {
-		o.DomainContains = append(o.DomainContains, contains)
+		o.DomainContains = append(o.DomainContains, contains...)
 	}
 }

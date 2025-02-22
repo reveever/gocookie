@@ -18,7 +18,7 @@ func GetCookies(browserType BrowserType, opts ...Option) ([]*http.Cookie, error)
 	if err != nil {
 		return nil, err
 	}
-	return browser.GetCookies(o.domainFilter())
+	return browser.GetCookies(o.DomainFilter())
 }
 
 func GetCookiesJar(browserType BrowserType, opts ...Option) (http.CookieJar, error) {
