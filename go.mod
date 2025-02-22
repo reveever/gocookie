@@ -1,4 +1,4 @@
-module github.com/reveever/GoCookie
+module github.com/reveever/gocookie
 
 go 1.22.6
 
