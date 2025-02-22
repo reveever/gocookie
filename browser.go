@@ -81,6 +81,10 @@ type Options struct {
 type domainFilter func(domain string) bool
 
 func (o *Options) DomainFilter() domainFilter {
+	if len(o.Domains) == 0 && len(o.DomainSuffix) == 0 && len(o.DomainContains) == 0 {
+		return nil
+	}
+
 	return func(domain string) bool {
 		if len(o.Domains) > 0 {
 			for _, d := range o.Domains {
