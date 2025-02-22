@@ -1,0 +1,10 @@
+github.com/cixtor/binarycookies v1.3.0 h1:Yo9s8ujK5aPdOCIClBXlavBJP7QDUdnTqq9ybj0C3Os=
+github.com/cixtor/binarycookies v1.3.0/go.mod h1:9zwen+JSyQsedFCh2xJ7C/Gw/muke34b0ETLgb/bl4A=
+github.com/keybase/go-keychain v0.0.0-20250124001843-7f41edfa9689 h1:V4Li6BEtsuk3kXc4V5KWG9+xrfmqJhlTz3WFJZSurCQ=
+github.com/keybase/go-keychain v0.0.0-20250124001843-7f41edfa9689/go.mod h1:5IIEcwnPTxFTdFEYdyIjJvRuZnTkf+R4nTxSXRrKDT4=
+github.com/mattn/go-sqlite3 v1.14.24 h1:tpSp2G2KyMnnQu99ngJ47EIkWVmliIizyZBfPrBWDRM=
+github.com/mattn/go-sqlite3 v1.14.24/go.mod h1:Uh1q+B4BYcTPb+yiD3kU8Ct7aC0hY9fxUwlHK0RXw+Y=
+golang.org/x/crypto v0.32.0 h1:euUpcYgM8WcP71gNpTqQCn6rC2t6ULUPiOzfWaXVVfc=
+golang.org/x/crypto v0.32.0/go.mod h1:ZnnJkOaASj8g0AjIduWNlq2NRxL0PlBrbKVyZ6V/Ugc=
+golang.org/x/net v0.21.0 h1:AQyQV4dYCvJ7vGmJyKki9+PBdyvhkSd8EIx/qb0AYv4=
+golang.org/x/net v0.21.0/go.mod h1:bIjVDfnllIU7BJ2DNgfnXvpSvtn8VRwhlsaeUTyUS44=
