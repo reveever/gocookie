@@ -41,7 +41,7 @@ var (
 	edgeSecretKeyMu sync.Mutex
 )
 
-func GetEdgeSecretKey() ([]byte, error) {
+func GetEdgeSecretKey(cookiePath string) ([]byte, error) {
 	edgeSecretKeyMu.Lock()
 	defer edgeSecretKeyMu.Unlock()
 
@@ -62,7 +62,7 @@ var (
 	chromeSecretKeyMu sync.Mutex
 )
 
-func GetChromeSecretKey() ([]byte, error) {
+func GetChromeSecretKey(cookiePath string) ([]byte, error) {
 	chromeSecretKeyMu.Lock()
 	defer chromeSecretKeyMu.Unlock()
 

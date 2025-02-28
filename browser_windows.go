@@ -22,10 +22,10 @@ func GetCookieFilePath(browserType BrowserType) string {
 	}
 }
 
-func GetEdgeSecretKey() ([]byte, error) {
+func GetEdgeSecretKey(cookiePath string) ([]byte, error) {
 	return nil, errors.New("get edge secret key not implemented")
 }
 
-func GetChromeSecretKey() ([]byte, error) {
+func GetChromeSecretKey(cookiePath string) ([]byte, error) {
 	return nil, errors.New("get chrome secret key not implemented")
 }

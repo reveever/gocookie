@@ -42,7 +42,7 @@ func NewBrowser(browserType BrowserType, cookiePath string, secretKey []byte) (B
 	case Chrome:
 		if len(secretKey) == 0 {
 			var err error
-			if secretKey, err = GetChromeSecretKey(); err != nil {
+			if secretKey, err = GetChromeSecretKey(cookiePath); err != nil {
 				return nil, err
 			}
 		}
@@ -51,7 +51,7 @@ func NewBrowser(browserType BrowserType, cookiePath string, secretKey []byte) (B
 	case Edge:
 		if len(secretKey) == 0 {
 			var err error
-			if secretKey, err = GetEdgeSecretKey(); err != nil {
+			if secretKey, err = GetEdgeSecretKey(cookiePath); err != nil {
 				return nil, err
 			}
 		}
