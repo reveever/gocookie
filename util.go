@@ -7,10 +7,12 @@ import (
 	"errors"
 	"fmt"
 	"time"
+
+	_ "modernc.org/sqlite"
 )
 
-func GetSQLite3Schema(path string) (string, error) {
-	cookiesDB, err := sql.Open("sqlite3", "file:"+path+"?mode=ro")
+func GetSQLiteSchema(path string) (string, error) {
+	cookiesDB, err := sql.Open("sqlite", "file:"+path+"?mode=ro")
 	if err != nil {
 		return "", fmt.Errorf("opening database: %v", err)
 	}

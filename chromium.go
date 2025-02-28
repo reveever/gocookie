@@ -7,8 +7,8 @@ import (
 	"fmt"
 	"net/http"
 
-	_ "github.com/mattn/go-sqlite3"
 	"golang.org/x/crypto/pbkdf2"
+	_ "modernc.org/sqlite"
 )
 
 const queryChromiumCookie = `SELECT name, encrypted_value, host_key, path, expires_utc, is_secure, is_httponly FROM cookies`
@@ -35,7 +35,7 @@ func (c *chromium) GetName() string {
 }
 
 func (c *chromium) GetCookies(domainFilter domainFilter) ([]*http.Cookie, error) {
-	cookiesDB, err := sql.Open("sqlite3", "file:"+c.cookiePath+"?mode=ro")
+	cookiesDB, err := sql.Open("sqlite", "file:"+c.cookiePath+"?mode=ro")
 	if err != nil {
 		return nil, err
 	}

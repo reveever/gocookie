@@ -4,6 +4,8 @@ import (
 	"database/sql"
 	"net/http"
 	"time"
+
+	_ "modernc.org/sqlite"
 )
 
 const queryFirefoxCookie = `SELECT name, value, host, path, expiry, isSecure, isHttpOnly FROM moz_cookies`
@@ -23,7 +25,7 @@ func (f *firefox) GetName() string {
 }
 
 func (f *firefox) GetCookies(domainFilter domainFilter) ([]*http.Cookie, error) {
-	cookiesDB, err := sql.Open("sqlite3", "file:"+f.cookiePath+"?mode=ro")
+	cookiesDB, err := sql.Open("sqlite", "file:"+f.cookiePath+"?mode=ro")
 	if err != nil {
 		return nil, err
 	}
