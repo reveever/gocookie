@@ -23,6 +23,28 @@ const (
 	Firefox  BrowserType = "Firefox"
 )
 
+func ParseBrowserType(browserName string) (BrowserType, error) {
+	name := strings.TrimSpace(strings.ToLower(browserName))
+
+	if strings.Contains(name, "safari") || strings.Contains(name, "sf") || strings.Contains(name, "appl") {
+		return Safari, nil
+	}
+	if strings.Contains(name, "chrome") || strings.Contains(name, "goo") {
+		return Chrome, nil
+	}
+	if strings.Contains(name, "edge") || strings.Contains(name, "ms") {
+		return Edge, nil
+	}
+	if strings.Contains(name, "chromium") {
+		return Chromium, nil
+	}
+	if strings.Contains(name, "firefox") || strings.Contains(name, "ff") || strings.Contains(name, "moz") {
+		return Firefox, nil
+	}
+
+	return "", fmt.Errorf("unsupported browser type: %s (supported: safari, chrome, edge, chromium, firefox)", browserName)
+}
+
 func NewBrowser(browserType BrowserType, cookiePath string, secretKey []byte) (Browser, error) {
 	if cookiePath == "" {
 		cookiePath = GetCookieFilePath(browserType)
